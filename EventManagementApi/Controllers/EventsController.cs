@@ -29,8 +29,8 @@ namespace EventManagementApi.Controllers
         //public IActionResult GetAll() => Ok(repository.GetAll());
 
         //Event GetById(int id);
-        [HttpGet]
-        [Route("{id}")]
+        [HttpGet("{id}", Name = nameof(GetById))]
+        //[Route("{id}")]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(typeof(Event), StatusCodes.Status200OK)]
         public IActionResult GetById(int id)
@@ -52,7 +52,7 @@ namespace EventManagementApi.Controllers
                 return BadRequest("Invalid Id");
             }
             repository.Add(newEvent);
-            return Created("TODO", newEvent);
+            return CreatedAtAction(nameof(GetById), new {id = newEvent.Id }, newEvent);
 
 
         }
