@@ -62,11 +62,11 @@ namespace EventManagementApi.Controllers
         //void Delete(int id);
         [HttpDelete]
         [Route("{eventToDeleteId}")]
-        public IActionResult Delete(int eventToDeleteid)
+        public IActionResult Delete(int eventToDeleteId)
         {
             try
             {
-                repository.Delete(eventToDeleteid);
+                repository.Delete(eventToDeleteId);
             }
             catch (ArgumentException)
             {
